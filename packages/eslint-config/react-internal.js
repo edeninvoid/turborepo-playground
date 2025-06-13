@@ -1,4 +1,4 @@
-import js from "@eslint/js"
+// import js from "@eslint/js"
 import eslintConfigPrettier from "eslint-config-prettier"
 import pluginReact from "eslint-plugin-react"
 import pluginReactHooks from "eslint-plugin-react-hooks"
@@ -13,7 +13,7 @@ import { config as baseConfig } from "./base.js"
  * @type {import("eslint").Linter.Config} */
 export const config = [
   ...baseConfig,
-  js.configs.recommended,
+  // js.configs.recommended,
   eslintConfigPrettier,
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,

@@ -1,0 +1,25 @@
+{
+  "name": "@workspace/shared",
+  "version": "1.0.0",
+  "type": "module",
+  "private": "true",
+  "main": "./src/index.js",
+  "exports": {
+    "./hooks/*": "./src/hooks/*.ts",
+    "./utils/*": "./src/utils/*.ts",
+    "./constants/*": "./src/constants/*.ts",
+    "./types/*": "./src/types/*.ts",
+    "./lib/*": "./src/lib/*.ts"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "5.7.3"
+  },
+  "packageManager": "pnpm@10.4.1"
+}
