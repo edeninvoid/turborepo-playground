@@ -1,4 +1,4 @@
-import { CartApi } from '@workspace/services/apis/CartApi'
-import axiosInstance from '@/lib/axios'
+import axiosInstance from '@/lib/axios';
+import { CartApi } from '@repo/shared/apis/CartApi';
 
-export const cartApi = new CartApi(axiosInstance)
+export const cartApi = new CartApi(axiosInstance);

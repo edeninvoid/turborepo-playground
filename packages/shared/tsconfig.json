@@ -1,0 +1,12 @@
+{
+  "extends": "@workspace/typescript-config/react-library.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@repo/shared/*": ["*"]
+    },
+    "outDir": "dist",
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}

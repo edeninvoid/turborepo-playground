@@ -16,13 +16,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@workspace/ui/components/select';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTheme } from 'next-themes';
+import { useTest, useUserData } from '@repo/shared/hooks/useTest';
+import { useRouter } from 'next/navigation';
 import { cartApi } from '@/lib/services';
-import { useTest } from '@workspace/shared/hooks/useTest';
-import { OrderType } from '@workspace/shared/types/orderTypes';
+import { OrderType } from '@repo/shared/types/orderTypes';
+import { useUserStore } from '@repo/shared/stores/userStore';
 
 export default function Page() {
+  const { push } = useRouter();
   const { theme, setTheme } = useTheme();
   const [value, setValue] = useState('');
 
@@ -40,14 +43,14 @@ export default function Page() {
   };
   useTest(orderType());
 
-  useEffect(() => {
-    cartApi.getCartCount().then(res => console.log(res));
-  }, []);
+  const { data } = useUserData(cartApi);
+  const username = useUserStore.getState().username;
 
+  console.log(data?.data);
   return (
     <div className="flex items-center justify-center min-h-svh">
       <div className="flex flex-col items-center justify-center gap-4">
-        <h1 className="text-2xl font-bold">Hello World</h1>
+        <h1 className="text-2xl font-bold">Hello World, {username}</h1>
         <span>{process.env.NEXT_PUBLIC_PROJECT_NAME!}</span>
         <div className="flex gap-2">
           <Button onClick={() => setTheme('light')}>Light</Button>
@@ -56,6 +59,9 @@ export default function Page() {
         </div>
         <Button size="sm" onClick={() => alert('버튼!')}>
           Button
+        </Button>
+        <Button size={'sm'} type={'button'} onClick={() => push('/query')}>
+          queryPagelink
         </Button>
         <Select value={value} onValueChange={selectValueChange}>
           <SelectTrigger className="w-[180px]">
