@@ -9,7 +9,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@workspace/ui/components/alert-dialog';
-import { Button } from '@workspace/ui/components/button.js';
+import { Button } from '@workspace/ui/components/button';
 
 export function AlertDialogDemo() {
   return (
