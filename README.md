@@ -4,3 +4,8 @@
 ```bash
 pnpm dlx shadcn@latest add button -c packages/ui
 ```
+
+### apps/{app} 추가 e.g.
+```bash
+pnpm generate {{test-app}}
+```
