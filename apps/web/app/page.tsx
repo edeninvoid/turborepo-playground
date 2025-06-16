@@ -4,6 +4,7 @@ import { useCartCount, useTest } from '@repo/shared/hooks/useTest';
 import { useUserStore } from '@repo/shared/stores/userStore';
 import { Button } from '@workspace/ui/components/button';
 import { Checkbox } from '@workspace/ui/components/checkbox';
+import { AlertDialogDemo } from '@workspace/ui/components/common/AlertDialog';
 import {
   Dialog,
   DialogContent,
@@ -21,6 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@workspace/ui/components/select';
+import { Cake, Home } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -29,6 +31,7 @@ export default function Page() {
   const { push } = useRouter();
   const { theme, setTheme } = useTheme();
   const [value, setValue] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
   const { data } = useCartCount();
   const username = useUserStore.getState().username;
 
@@ -53,9 +56,6 @@ export default function Page() {
           <Button onClick={() => setTheme('dark')}>Dark</Button>
           <Button onClick={() => setTheme('system')}>System</Button>
         </div>
-        <Button size="sm" onClick={() => alert('버튼!')}>
-          Button
-        </Button>
         <Button size={'sm'} type={'button'} onClick={() => push('/query')}>
           /query
         </Button>
@@ -88,6 +88,10 @@ export default function Page() {
           <Label>라라벨벨</Label>
         </div>
         <Input />
+        <Button size="sm" onClick={() => setModalOpen(true)}>
+          Button <Home /> <Cake />
+        </Button>
+        <AlertDialogDemo />
       </div>
     </div>
   );
