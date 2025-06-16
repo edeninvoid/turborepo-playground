@@ -18,16 +18,18 @@ import {
 } from '@workspace/ui/components/select';
 import { useState } from 'react';
 import { useTheme } from 'next-themes';
-import { useTest, useUserData } from '@repo/shared/hooks/useTest';
 import { useRouter } from 'next/navigation';
-import { cartApi } from '@/lib/services';
-import { OrderType } from '@repo/shared/types/orderTypes';
 import { useUserStore } from '@repo/shared/stores/userStore';
+import { useCartCount, useTest } from '@repo/shared/hooks/useTest';
 
 export default function Page() {
   const { push } = useRouter();
   const { theme, setTheme } = useTheme();
   const [value, setValue] = useState('');
+  const { data } = useCartCount();
+  const username = useUserStore.getState().username;
+
+  useTest('test!');
 
   const selectValueChange = (value: string) => {
     if (value === 'light') {
@@ -38,20 +40,11 @@ export default function Page() {
     }
   };
 
-  const orderType = (): OrderType => {
-    return 'buy';
-  };
-  useTest(orderType());
-
-  const { data } = useUserData(cartApi);
-  const username = useUserStore.getState().username;
-
-  console.log(data?.data);
+  console.log(data);
   return (
     <div className="flex items-center justify-center min-h-svh">
       <div className="flex flex-col items-center justify-center gap-4">
         <h1 className="text-2xl font-bold">Hello World, {username}</h1>
-        <span>{process.env.NEXT_PUBLIC_PROJECT_NAME!}</span>
         <div className="flex gap-2">
           <Button onClick={() => setTheme('light')}>Light</Button>
           <Button onClick={() => setTheme('dark')}>Dark</Button>

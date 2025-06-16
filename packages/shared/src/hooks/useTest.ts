@@ -1,24 +1,22 @@
 import { useEffect } from 'react';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { CartApi } from '../apis/CartApi.js';
+import { useQuery } from '@tanstack/react-query';
+import { AxiosInstance } from 'axios';
+import { createCartApi } from '@repo/shared/apis/checkout/CartApi';
+import { getAxiosInstance } from '@repo/shared/apis/_axios/instance';
 
-const useTest = (prop?: string) => {
+export const useTest = (prop?: string) => {
   useEffect(() => {
     console.log('use Test prop ==> ', prop);
   }, [prop]);
 };
 
-const useUserData = (cartApi: CartApi) => {
+export const useCartCount = () => {
+  const axios = getAxiosInstance();
+  const cartApi = createCartApi(axios);
+
   return useQuery({
-    queryKey: ['users'],
-    queryFn: () => cartApi.getUsers(),
-    staleTime: 1000 * 60 * 5,
+    queryKey: ['CART_COUNT'],
+    queryFn: () => cartApi.getCartCount(),
+    select: data => data?.count ?? 0,
   });
 };
-
-const useGetUserCacheData = () => {
-  const queryClient = useQueryClient();
-  return queryClient.getQueryData<any>(['users']) ?? [];
-};
-
-export { useTest, useUserData, useGetUserCacheData };
