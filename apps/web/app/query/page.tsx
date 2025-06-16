@@ -1,8 +1,8 @@
 'use client';
 
+import { useCartCount } from '@repo/shared/hooks/useTest';
 import { useUserStore } from '@repo/shared/stores/userStore';
 import { useEffect } from 'react';
-import { useCartCount } from '@repo/shared/hooks/useTest';
 
 export default function QueryPage() {
   const { data } = useCartCount();

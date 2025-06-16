@@ -1,6 +1,9 @@
 'use client';
 
+import { useCartCount, useTest } from '@repo/shared/hooks/useTest';
+import { useUserStore } from '@repo/shared/stores/userStore';
 import { Button } from '@workspace/ui/components/button';
+import { Checkbox } from '@workspace/ui/components/checkbox';
 import {
   Dialog,
   DialogContent,
@@ -9,6 +12,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@workspace/ui/components/dialog';
+import { Input } from '@workspace/ui/components/input';
+import { Label } from '@workspace/ui/components/label';
 import {
   Select,
   SelectContent,
@@ -16,11 +21,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@workspace/ui/components/select';
-import { useState } from 'react';
 import { useTheme } from 'next-themes';
 import { useRouter } from 'next/navigation';
-import { useUserStore } from '@repo/shared/stores/userStore';
-import { useCartCount, useTest } from '@repo/shared/hooks/useTest';
+import { useState } from 'react';
 
 export default function Page() {
   const { push } = useRouter();
@@ -42,9 +45,9 @@ export default function Page() {
 
   console.log(data);
   return (
-    <div className="flex items-center justify-center min-h-svh">
+    <div className="flex min-h-svh items-baseline justify-center">
       <div className="flex flex-col items-center justify-center gap-4">
-        <h1 className="text-2xl font-bold">Hello World, {username}</h1>
+        <h1 className="text-3xl font-bold">Hello World, {username}</h1>
         <div className="flex gap-2">
           <Button onClick={() => setTheme('light')}>Light</Button>
           <Button onClick={() => setTheme('dark')}>Dark</Button>
@@ -54,10 +57,10 @@ export default function Page() {
           Button
         </Button>
         <Button size={'sm'} type={'button'} onClick={() => push('/query')}>
-          queryPagelink
+          /query
         </Button>
         <Select value={value} onValueChange={selectValueChange}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="h-4 w-[180px] items-baseline">
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
           <SelectContent>
@@ -67,7 +70,9 @@ export default function Page() {
           </SelectContent>
         </Select>
         <Dialog>
-          <DialogTrigger>Open</DialogTrigger>
+          <DialogTrigger>
+            <Button>Dialog Open</Button>
+          </DialogTrigger>
           <DialogContent>
             <DialogHeader>
               <DialogTitle>Are you absolutely sure?</DialogTitle>
@@ -78,6 +83,11 @@ export default function Page() {
             </DialogHeader>
           </DialogContent>
         </Dialog>
+        <div className="flex gap-2">
+          <Checkbox onCheckedChange={checked => alert(checked)} />
+          <Label>라라벨벨</Label>
+        </div>
+        <Input />
       </div>
     </div>
   );
