@@ -56,9 +56,6 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
-      react-hook-form:
-        specifier: ^7.58.0
-        version: 7.58.0(react@19.0.0)
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:^

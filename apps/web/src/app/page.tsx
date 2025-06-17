@@ -31,11 +31,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@repo/ui/components/select';
-import { Cake, Home, Link } from 'lucide-react';
+import { Link } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
 
 type IFormType = {
   username: string;
@@ -44,12 +43,11 @@ type IFormType = {
 export default function Page() {
   const { push } = useRouter();
   const { theme, setTheme } = useTheme();
-  const [value, setValue] = useState('');
-  const [submitValue, setSubmitValue] = useState('');
-  const [modalOpen, setModalOpen] = useState(false);
+  const [value, setValue] = useState<string>('');
+  const [submitValue, setSubmitValue] = useState<string>('');
+
   const { data } = useCartCount();
   const username = useUserStore.getState().username;
-  const form = useForm();
   useTest('test!');
 
   function selectValueChange(value: string) {
@@ -78,11 +76,6 @@ export default function Page() {
             <SelectItem value="system">System</SelectItem>
           </SelectContent>
         </Select>
-        <Button size={'sm'} type={'button'} onClick={() => push('/query')}>
-          <Link />
-          query
-        </Button>
-
         <CustomForm<IFormType> onSubmit={onSubmit}>
           {form => (
             <>
@@ -108,13 +101,13 @@ export default function Page() {
           <Checkbox id={'cb1'} onCheckedChange={checked => alert(checked)} />
           <Label htmlFor={'cb1'}>라라벨벨</Label>
         </div>
-        <div className="flex gap-3">
-          <Input />
-          <Button size="sm" onClick={() => setModalOpen(true)}>
-            Button <Home />
-            <Cake />
-          </Button>
-        </div>
+        {/*<div className="flex gap-3">*/}
+        {/*  <Input />*/}
+        {/*  <Button size="sm">*/}
+        {/*    Button <Home />*/}
+        {/*    <Cake />*/}
+        {/*  </Button>*/}
+        {/*</div>*/}
         <Dialog>
           <DialogTrigger>Show Dialog</DialogTrigger>
           <DialogContent>
@@ -128,6 +121,10 @@ export default function Page() {
           </DialogContent>
         </Dialog>
         <AlertDialogDemo />
+        <Button size={'sm'} type={'button'} onClick={() => push('/query')}>
+          <Link />
+          query
+        </Button>
       </div>
     </div>
   );

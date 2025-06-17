@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { AxiosInstance } from 'axios';
-import { createCartApi } from '@repo/shared/apis/checkout/CartApi';
 import { getAxiosInstance } from '@repo/shared/apis/_axios/instance';
+import { createCartApi } from '@repo/shared/apis/checkout/CartApi';
+import { useQuery } from '@tanstack/react-query';
+import { useEffect } from 'react';
 
 export const useTest = (prop?: string) => {
   useEffect(() => {
