@@ -78,7 +78,7 @@ export default function Page() {
             <SelectItem value="system">System</SelectItem>
           </SelectContent>
         </Select>
-        <Button size={'sm'} type={'button'} client={'muji'} onClick={() => push('/query')}>
+        <Button size={'sm'} type={'button'} onClick={() => push('/query')}>
           <Link />
           query
         </Button>
