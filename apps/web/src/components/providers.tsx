@@ -1,9 +1,9 @@
 'use client';
 
+import { initializeApp } from '@/lib/initializer';
+import CacheProvider from '@repo/shared/providers/CacheProvider';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { ReactNode } from 'react';
-import CacheProvider from '@repo/shared/providers/CacheProvider';
-import { initializeApp } from '@/lib/axiosInitializer';
 
 initializeApp();
 

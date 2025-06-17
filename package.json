@@ -10,8 +10,8 @@
     "generate": "hygen generator create-next-app --name"
   },
   "devDependencies": {
-    "@workspace/eslint-config": "workspace:*",
-    "@workspace/typescript-config": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "hygen": "^6.2.11",
     "prettier": "^3.5.1",
     "prettier-plugin-organize-imports": "^4.1.0",

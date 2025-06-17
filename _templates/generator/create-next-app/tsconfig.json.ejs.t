@@ -2,19 +2,14 @@
 to: apps/<%= name %>/tsconfig.json
 ---
 {
-  "extends": "@workspace/typescript-config/nextjs.json",
+  "extends": "@repo/typescript-config/nextjs.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"],
+      "@/*": ["src/*"],
       "@repo/shared/*": ["../../packages/shared/src/*"],
-      "@workspace/ui/*": ["../../packages/ui/src/*"]
-    },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+      "@repo/ui/*": ["../../packages/ui/src/*"]
+    }
   },
   "include": [
     "next-env.d.ts",

@@ -8,8 +8,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@workspace/ui/components/alert-dialog';
-import { Button } from '@workspace/ui/components/button';
+} from '@repo/ui/components/alert-dialog';
+import { Button } from '@repo/ui/components/button';
 
 export function AlertDialogDemo() {
   return (
@@ -17,14 +17,17 @@ export function AlertDialogDemo() {
       <AlertDialogTrigger asChild>
         <Button variant="outline">Show Alert Dialog</Button>
       </AlertDialogTrigger>
-      <AlertDialogContent className={`w-[260px]`}>
+      <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle className={`text-center`}>alert</AlertDialogTitle>
-          <AlertDialogDescription className={`text-center`}>dd</AlertDialogDescription>
+          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogDescription>
+            This action cannot be undone. This will permanently delete your account and remove your
+            data from our servers.
+          </AlertDialogDescription>
         </AlertDialogHeader>
-        <AlertDialogFooter className={`justify-center`}>
+        <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={() => console.log('confirm!')}>Confirm</AlertDialogAction>
+          <AlertDialogAction onClick={() => console.log('confirm!')}>Continue</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

@@ -14,9 +14,9 @@
     "components": "@/components",
     "hooks": "@/hooks",
     "lib": "@/lib",
-    "shared": "@workspace/shared/src",
-    "services": "@workspace/services/src",
-    "utils": "@workspace/ui/lib/utils",
-    "ui": "@workspace/ui/components"
+    "shared": "@repo/shared/src",
+    "services": "@repo/services/src",
+    "utils": "@repo/ui/lib/utils",
+    "ui": "@repo/ui/components"
   }
 }

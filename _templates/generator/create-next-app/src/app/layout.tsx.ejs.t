@@ -1,7 +1,7 @@
 ---
 to: apps/<%= name %>/src/app/layout.tsx
 ---
-import '@workspace/ui/globals.css';
+import '@repo/ui/globals.css';
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 

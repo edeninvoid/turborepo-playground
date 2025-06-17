@@ -15,7 +15,7 @@ to: apps/<%= name %>/package.json
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@workspace/ui": "workspace:*",
+    "@repo/ui": "workspace:*",
     "@repo/shared": "workspace:*",
     "lucide-react": "^0.475.0",
     "next": "^15.3.3",
@@ -26,8 +26,8 @@ to: apps/<%= name %>/package.json
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@workspace/eslint-config": "workspace:^",
-    "@workspace/typescript-config": "workspace:*",
+    "@repo/eslint-config": "workspace:^",
+    "@repo/typescript-config": "workspace:*",
     "typescript": "^5.7.3"
   }
 }
