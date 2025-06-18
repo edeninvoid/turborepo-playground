@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import { Providers } from '@/components/_common/providers';
 import { Toaster } from '@repo/ui/components/sonner';
 import '@repo/ui/styles/globals.css';
+import { ReactNode } from 'react';
 
 const fontSans = Geist({
   subsets: ['latin'],
@@ -17,7 +18,7 @@ const fontMono = Geist_Mono({
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>

@@ -1,10 +1,10 @@
-import { getAxiosInstance } from '@repo/shared/apis/_axios/instance';
 import { EventViewApiResponse } from '@repo/shared/apis/checkout/EventApiType';
+import { getAxiosInstance } from '@repo/shared/lib/axiosinstance';
 import { Inquiry } from '@repo/shared/types/boardType';
 import { PaginateApiResponse } from '@repo/shared/types/commonType';
 import { AxiosInstance } from 'axios';
 
-const createEventApi = (axios: AxiosInstance) => ({
+export const createEventApi = (axios: AxiosInstance) => ({
   async getEventListApi({
     page = 1,
     limit = 6,

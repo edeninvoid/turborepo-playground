@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 
 let axiosInstance: AxiosInstance | null = null;
 
-export function initializeAxios(baseURL: string) {
+export function initializeAxiosInstance(baseURL: string) {
   axiosInstance = axios.create({
     baseURL,
     timeout: 10000,
@@ -41,13 +41,32 @@ export function initializeAxios(baseURL: string) {
 }
 
 export function getAxiosInstance() {
-  console.log('✅ baseURL:', process.env.API_BASE_URL);
-  if (!axiosInstance) {
-    const isSSR = typeof window === 'undefined';
-    const baseURL = isSSR ? process.env.API_BASE_URL! : process.env.NEXT_PUBLIC_API_BASE_URL!;
-
-    return initializeAxios(baseURL);
-  }
-
+  if (!axiosInstance) throw new Error('⚠️ Axios instance is not initialized.');
   return axiosInstance;
+}
+
+export function getAxiosServerInstance(baseURL: string): AxiosInstance {
+  const instance = axios.create({
+    baseURL,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
+    },
+  });
+
+  instance.interceptors.response.use(
+    async response => {
+      if (response.data.success === false) {
+        return Promise.reject(response.data);
+      }
+
+      return await response?.data;
+    },
+    error => {
+      console.error('API Error:', error);
+      return Promise.reject(error);
+    },
+  );
+
+  return instance;
 }
