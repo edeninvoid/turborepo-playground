@@ -41,6 +41,7 @@ export function initializeAxios(baseURL: string) {
 }
 
 export function getAxiosInstance() {
+  console.log('✅ baseURL:', process.env.API_BASE_URL);
   if (!axiosInstance) {
     const isSSR = typeof window === 'undefined';
     const baseURL = isSSR ? process.env.API_BASE_URL! : process.env.NEXT_PUBLIC_API_BASE_URL!;
