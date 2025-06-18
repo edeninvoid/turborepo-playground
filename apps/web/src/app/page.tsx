@@ -1,11 +1,12 @@
 'use client';
 
 import { useCartCount, useTest } from '@repo/shared/hooks/useTest';
-import { useUserStore } from '@repo/shared/stores/userStore';
+import { useCartCountStore, useUserStore } from '@repo/shared/stores/userStore';
 import { Button } from '@repo/ui/components/button';
 import { Checkbox } from '@repo/ui/components/checkbox';
 import { AlertDialogDemo } from '@repo/ui/components/common/AlertDialog';
 import CustomForm from '@repo/ui/components/common/CustomForm';
+import { SonnerDemo } from '@repo/ui/components/common/SonnerDemo';
 import {
   Dialog,
   DialogContent,
@@ -31,8 +32,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@repo/ui/components/select';
+import { useNextTheme } from '@repo/ui/lib/utils';
 import { Link } from 'lucide-react';
-import { useTheme } from 'next-themes';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -42,12 +43,13 @@ type IFormType = {
 
 export default function Page() {
   const { push } = useRouter();
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useNextTheme();
   const [value, setValue] = useState<string>('');
   const [submitValue, setSubmitValue] = useState<string>('');
 
   const { data } = useCartCount();
-  const username = useUserStore.getState().username;
+  const { username } = useUserStore();
+  const { cartCount } = useCartCountStore();
   useTest('test!');
 
   function selectValueChange(value: string) {
@@ -64,7 +66,7 @@ export default function Page() {
     <div className="flex min-h-svh items-baseline justify-center">
       <div className="flex flex-col items-center justify-center gap-4">
         <h1 className="text-3xl font-bold">
-          Hello World, {username} {submitValue}
+          Hello World, {username} {cartCount} {submitValue}
         </h1>
         <Select value={value} onValueChange={selectValueChange}>
           <SelectTrigger className="h-4 w-[180px] items-baseline">
@@ -101,13 +103,10 @@ export default function Page() {
           <Checkbox id={'cb1'} onCheckedChange={checked => alert(checked)} />
           <Label htmlFor={'cb1'}>라라벨벨</Label>
         </div>
-        {/*<div className="flex gap-3">*/}
-        {/*  <Input />*/}
-        {/*  <Button size="sm">*/}
-        {/*    Button <Home />*/}
-        {/*    <Cake />*/}
-        {/*  </Button>*/}
-        {/*</div>*/}
+        <div className="flex gap-3">
+          <Input />
+          <SonnerDemo />
+        </div>
         <Dialog>
           <DialogTrigger>Show Dialog</DialogTrigger>
           <DialogContent>
@@ -121,10 +120,20 @@ export default function Page() {
           </DialogContent>
         </Dialog>
         <AlertDialogDemo />
-        <Button size={'sm'} type={'button'} onClick={() => push('/query')}>
-          <Link />
-          query
-        </Button>
+        <div className="flex gap-2">
+          <Button size={'sm'} type={'button'} onClick={() => push('/query')}>
+            <Link />
+            query
+          </Button>
+          <Button size={'sm'} type={'button'} onClick={() => push('/hydrate')}>
+            <Link />
+            hydrate
+          </Button>
+          <Button size={'sm'} type={'button'} onClick={() => push('/cookie')}>
+            <Link />
+            cookie
+          </Button>
+        </div>
       </div>
     </div>
   );

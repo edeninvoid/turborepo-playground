@@ -12,9 +12,11 @@ export default function QueryPage() {
   const { data } = useCartCount();
   const { username, setUsername } = useUserStore();
   const { count, increment, decrement } = useCounterStore();
+  // const { cartCount, fetchCartCount } = useCartCountStore();
 
   useEffect(() => {
     setUsername('😎');
+    // fetchCartCount();
   }, []);
   console.log(data);
   return (
@@ -23,6 +25,7 @@ export default function QueryPage() {
         Zustand store: {username} {count}
       </h1>
       <span>Cart Count Query Test: {data}</span>
+      {/*<span>Cart Count Zustand fetch Test: {cartCount}</span>*/}
       <Button size={'sm'} type={'button'} onClick={() => push('/')}>
         <Home />
         home

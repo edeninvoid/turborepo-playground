@@ -42,7 +42,11 @@ export function initializeAxios(baseURL: string) {
 
 export function getAxiosInstance() {
   if (!axiosInstance) {
-    throw new Error('Axios instance 초기화가 필요합니다.');
+    const isSSR = typeof window === 'undefined';
+    const baseURL = isSSR ? process.env.API_BASE_URL! : process.env.NEXT_PUBLIC_API_BASE_URL!;
+
+    return initializeAxios(baseURL);
   }
+
   return axiosInstance;
 }

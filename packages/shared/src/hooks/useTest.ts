@@ -1,5 +1,5 @@
-import { getAxiosInstance } from '@repo/shared/apis/_axios/instance';
-import { createCartApi } from '@repo/shared/apis/checkout/CartApi';
+import { getCartApi } from '@repo/shared/apis/checkout/CartApi';
+import { QUERY_KEYS } from '@repo/shared/constants/queryKey';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect } from 'react';
 
@@ -10,11 +10,9 @@ export const useTest = (prop?: string) => {
 };
 
 export const useCartCount = () => {
-  const axios = getAxiosInstance();
-  const cartApi = createCartApi(axios);
-
+  const cartApi = getCartApi();
   return useQuery({
-    queryKey: ['CART_COUNT'],
+    queryKey: QUERY_KEYS.CART_COUNT,
     queryFn: () => cartApi.getCartCount(),
     select: data => data?.count ?? 0,
   });

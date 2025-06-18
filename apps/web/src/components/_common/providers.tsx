@@ -2,14 +2,14 @@
 
 import { initializeApp } from '@/lib/initializer';
 import CacheProvider from '@repo/shared/providers/CacheProvider';
-import { ThemeProvider as NextThemesProvider } from 'next-themes';
+import { NextThemeProvider } from '@repo/ui/lib/utils';
 import { ReactNode } from 'react';
 
 initializeApp();
 
 export function Providers({ children }: { children: ReactNode }) {
   return (
-    <NextThemesProvider
+    <NextThemeProvider
       attribute="class"
       defaultTheme="system"
       enableSystem
@@ -17,6 +17,6 @@ export function Providers({ children }: { children: ReactNode }) {
       enableColorScheme
     >
       <CacheProvider>{children}</CacheProvider>
-    </NextThemesProvider>
+    </NextThemeProvider>
   );
 }

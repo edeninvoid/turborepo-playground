@@ -1,3 +1,4 @@
+import { getCartApi } from '@repo/shared/apis/checkout/CartApi';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
@@ -30,5 +31,28 @@ export const useCounterStore = create<CounterState>()(
       decrement: () => set(state => ({ count: state.count - 1 }), false, 'counter/decrease'),
     }),
     { name: 'counterStore' },
+  ),
+);
+
+interface CartCountState {
+  cartCount: string;
+  fetchCartCount: () => void;
+}
+
+export const useCartCountStore = create<CartCountState>()(
+  devtools(
+    set => ({
+      cartCount: 0,
+      fetchCartCount: async () => {
+        const cartApi = getCartApi();
+        const res = await cartApi.getCartCount();
+        set(
+          state => ({ cartCount: res?.success ? 'true' : 'false' }),
+          false,
+          'cart/fetchCartCount',
+        );
+      },
+    }),
+    { name: 'cartStore' },
   ),
 );

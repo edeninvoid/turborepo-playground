@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from 'next/font/google';
 
-// import { Providers } from '@/src/components/providers';
-import { Providers } from '@/components/providers';
+import { Providers } from '@/components/_common/providers';
+import { Toaster } from '@repo/ui/components/sonner';
 import '@repo/ui/styles/globals.css';
 
 const fontSans = Geist({
@@ -23,6 +23,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased`}>
         <Providers>{children}</Providers>
+        <Toaster position="top-center" richColors />
       </body>
     </html>
   );
