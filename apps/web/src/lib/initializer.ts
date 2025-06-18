@@ -1,6 +1,6 @@
-import { initializeAxios } from '@repo/shared/apis/_axios/instance';
+import { initializeAxiosInstance } from '@repo/shared/lib/axiosinstance';
 
 export function initializeApp() {
   const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL!;
-  initializeAxios(baseURL);
+  initializeAxiosInstance(baseURL);
 }
