@@ -1,11 +1,11 @@
 # Turborepo + shadcn/ui Template
 
-### shadcn/ui 컴포넌트 추가 e.g.
+### Component Generator (shadcn/ui) e.g.
 ```bash
-pnpm dlx shadcn@latest add button -c packages/ui
+pnpm dlx shadcn@latest add {component-name} -c packages/ui
 ```
 
-### apps/{app} 추가 e.g.
+### App Generator (./apps/{app-name}) e.g.
 ```bash
-pnpm generate {{test-app}}
+pnpm generate {app-name}
 ```
