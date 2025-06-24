@@ -1,5 +1,6 @@
 import { PaginateApiResponse } from '@repo/shared/types/commonType';
 import type { InfiniteData } from '@repo/shared/types/reactQueryTypes';
+import { Skeleton } from '@repo/ui/components/_base/skeleton';
 
 type PromotionArticleListProps<T> = {
   useDataHook: () => {
@@ -23,7 +24,15 @@ export default function PromotionArticleList<T>({
 
   console.log(articleList);
   // if (!articleList.length) return <EmptyListState pageType={pageType} />;
-  return null;
+  return (
+    <div className="flex items-center space-x-4">
+      <Skeleton className="h-12 w-12" />
+      <div className="space-y-2">
+        <Skeleton className="h-4 w-[250px]" />
+        <Skeleton className="h-4 w-[200px]" />
+      </div>
+    </div>
+  );
   // <>
   //   <PromotionArticleGrid
   //     items={articleList}

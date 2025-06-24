@@ -8,14 +8,16 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@repo/ui/components/alert-dialog';
-import { Button } from '@repo/ui/components/button';
+} from '@repo/ui/components/_base/alert-dialog';
+import { Button } from '@repo/ui/components/_base/button';
 
 export function AlertDialogDemo() {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="outline">Show Alert Dialog</Button>
+        <Button variant="outline" className="text-xs text-red-500">
+          Show Alert Dialog
+        </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>

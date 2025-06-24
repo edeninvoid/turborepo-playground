@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@repo/ui/components/button';
+import { Button } from '@repo/ui/components/_base/button';
 import {
   Dialog,
   DialogContent,
@@ -8,14 +8,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@repo/ui/components/dialog';
+} from '@repo/ui/components/_base/dialog';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@repo/ui/components/select';
+} from '@repo/ui/components/_base/select';
 import Image from 'next/image';
 import { useState } from 'react';
 

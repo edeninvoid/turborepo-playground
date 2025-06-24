@@ -2,7 +2,8 @@
 
 import { useCartCount } from '@repo/shared/hooks/useTest';
 import { useCounterStore, useUserStore } from '@repo/shared/stores/userStore';
-import { Button } from '@repo/ui/components/button';
+import { Button } from '@repo/ui/components/_base/button';
+import { FormTest } from '@repo/ui/components/common/FormTest';
 import { Home } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
@@ -32,6 +33,7 @@ export default function QueryPage() {
       </Button>
       <Button onClick={increment}>count +1</Button>
       <Button onClick={decrement}>count -1</Button>
+      <FormTest />
     </div>
   );
 }

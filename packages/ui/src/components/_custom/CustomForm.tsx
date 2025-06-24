@@ -1,4 +1,4 @@
-import { Form } from '@repo/ui/components/form';
+import { Form } from '@repo/ui/components/_base/form';
 import { ReactNode } from 'react';
 import { FieldValues, useForm, UseFormReturn } from 'react-hook-form';
 
